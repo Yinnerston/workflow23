@@ -13,6 +13,8 @@ class Task(MPTTModel):
         ("EXC", "Exception"),
         ("BAS", "Base"),
     ]
+    COORD_MIN = -10000
+    COORD_MAX = 10000
 
     name = models.CharField(max_length=50, unique=True)
     parent = TreeForeignKey(
@@ -25,10 +27,12 @@ class Task(MPTTModel):
     status = models.CharField(max_length=3, choices=STATUS_CHOICES)
     body = models.CharField(max_length=500)
     x = models.BigIntegerField(
-        default=0, validators=[MinValueValidator(-10000), MaxValueValidator(10000)]
+        default=0,
+        validators=[MinValueValidator(COORD_MIN), MaxValueValidator(COORD_MAX)],
     )
     y = models.BigIntegerField(
-        default=0, validators=[MinValueValidator(-10000), MaxValueValidator(10000)]
+        default=0,
+        validators=[MinValueValidator(COORD_MIN), MaxValueValidator(COORD_MAX)],
     )
 
     class MPTTMeta:
