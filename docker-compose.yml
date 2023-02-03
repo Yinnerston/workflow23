@@ -13,7 +13,9 @@ services:
       - memefeed-network
   frontend:
     build: ./src/frontend
-    command: npm run dev
+    command: node src/app.js
+    ports:
+      - 8888:8888
     volumes:
       - ./src/frontend:/app
       - static_volume:/app/static
