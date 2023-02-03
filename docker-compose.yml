@@ -30,4 +30,3 @@ volumes:
   static_volume:
 networks:
   memefeed-network:
-  
