@@ -1,6 +1,14 @@
 # References
 memefeed
 
+# Static volume 
+static
+
+# Env files
+.backend.env
+.frontend.env
+.env
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

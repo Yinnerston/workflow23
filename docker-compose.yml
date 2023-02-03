@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  backend-django:
+    build: ./src/backend/workflow23
+    command: bash -c " python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./src/backend/workflow23:/app
+      - static_volume:/app/static
+    env_file:
+      - .backend.env
+    networks:
+      - memefeed-network
+  frontend:
+    build: ./src/frontend
+    command: npm run dev
+    volumes:
+      - ./src/frontend:/app
+      - static_volume:/app/static
+    networks:
+      - memefeed-network
+
+
+
+volumes:
+  static_volume:
+networks:
+  memefeed-network:
+  
