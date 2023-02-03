@@ -8,6 +8,7 @@ static
 .backend.env
 .frontend.env
 .env
+workflowvenv/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
