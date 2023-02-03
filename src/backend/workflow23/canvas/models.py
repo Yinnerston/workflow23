@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Task(MPTTModel):
@@ -23,6 +24,12 @@ class Task(MPTTModel):
     )
     status = models.CharField(max_length=3, choices=STATUS_CHOICES)
     body = models.CharField(max_length=500)
+    x = models.BigIntegerField(
+        default=0, validators=[MinValueValidator(-10000), MaxValueValidator(10000)]
+    )
+    y = models.BigIntegerField(
+        default=0, validators=[MinValueValidator(-10000), MaxValueValidator(10000)]
+    )
 
-    # class MPTTMeta:
-    #     order_insertion_by = ['name']
+    class MPTTMeta:
+        order_insertion_by = ["name"]
